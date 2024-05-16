@@ -7,6 +7,7 @@ class RGBA:
         self.r = clamp(r,0,255)
         self.g = clamp(g,0,255)
         self.b = clamp(b,0,255)
+        self.a = a
         if a != -1:
             self.a = clamp(a,0,1)
     @classmethod
@@ -131,7 +132,11 @@ class Hyprlang_config:
             if isinstance(value, dict):
                 self.config.append(Category.from_dict(key, value))
             elif isinstance(value, list):
-                self.config.append(Handler(key, *[Parameters(*v) for v in value]))
+                for i in value:
+                    if isinstance(i,dict):
+                        self.config.append(Category.from_dict(key,i))
+                    else:
+                        self.config.append(Handler(key, Parameters(*i)))
     def add(self, *obj:Union['Handler','Category']):
         """Adds a handler or category to the hyprlang"""
         for o in obj:
@@ -199,4 +204,3 @@ class Hyprlang:
             open(self.config_path, 'w').close()
         with open(self.config_path, 'w') as f:
             f.write(str(self))
-
