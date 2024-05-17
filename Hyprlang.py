@@ -180,9 +180,10 @@ class Hyprlang:
                 if os.path.basename(event.src_path) == os.path.basename(self.hyprlang.file_name):
                     config = Hyprlang_config.from_file(self.hyprlang.file_name)
                     self.hyprlang.config = config.config
-                for c in self.hyprlang.config:
-                    if event.src_path == c.file_name:
-                        c.config = Hyprlang_config.from_file(c.file_name).config
+                else:
+                    for c in self.hyprlang.config:
+                        if event.src_path == c.file_name:
+                            c.config = Hyprlang_config.from_file(c.file_name).config
                 self.hyprlang.write()
         if self.observer and self.observer.is_alive():
             return  
@@ -199,8 +200,9 @@ class Hyprlang:
     def write(self):
         """Writes the config to the file"""
         import os
-        if not os.path.exists(self.config_path):
+        if not os.path.exists(os.path.dirname(self.config_path)):
             os.makedirs(os.path.dirname(self.config_path), exist_ok=True)
+        if not os.path.exists(self.config_path):
             open(self.config_path, 'w').close()
         with open(self.config_path, 'w') as f:
             f.write(str(self))
