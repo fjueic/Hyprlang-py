@@ -1,3 +1,5 @@
+For reference [my configration](https://github.com/fjueic/.dotfiles/tree/main/.config/hypr)
+
 # Usage
 Defining Configurations
 
