@@ -181,7 +181,7 @@ class Hyprlang_config:
                 sleep(10)
         return module.config
 
-    def add_via_primitive(self, **kwargs):
+    def add_config_entries(self, **kwargs):
         """Adds a handler or category to the hyprlang"""
         for key, value in kwargs.items():
             if isinstance(value, dict):
