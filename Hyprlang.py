@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Union
 
 
 def clamp(value, min_value=-float("inf"), max_value=float("inf")):
@@ -194,6 +194,8 @@ class Hyprlang_config:
                         self.config.append(Handler(key, Parameters(*i)))
                     else:
                         self.config.append(Handler(key, Parameters(i)))
+            elif isinstance(value, tuple):
+                self.config.append(Handler(key, Parameters(*value)))
             else:
                 self.config.append(Handler(key, Parameters(value)))
 
