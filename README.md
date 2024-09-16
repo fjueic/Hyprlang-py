@@ -1,4 +1,13 @@
+[Code](https://github.com/fjueic/.dotfiles/blob/main/.config/hypr/Hyprlang.py)
+
 For reference [my configration](https://github.com/fjueic/.dotfiles/tree/main/.config/hypr)
+
+Notes:
+- Create an issue in my dotfiles
+- I am willing to add features, so just ask
+
+# Intro
+- Convert python  objects to [Hyprlang](https://github.com/hyprwm/hyprlang)
 
 # Usage
 Defining Configurations
